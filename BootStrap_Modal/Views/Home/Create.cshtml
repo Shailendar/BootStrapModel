@@ -1,0 +1,41 @@
+﻿@model BootStrap_Modal.Models.Modal
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="modal-header">
+    <button type="button" class="modal-close-btn close" data-dismiss="modal" aria-hidden="true" title="Click here to close">&times;</button>
+    <h2>Create</h2>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="modal-body" style="line-height:15px">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
